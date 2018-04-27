@@ -1,6 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-// var path = require("path");
+var path = require("path");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -22,9 +22,18 @@ app.get("/", function(req, res) {
   }); 
 
 app.get("/api/tables", function(req, res) {
-    // res.sendFile(path.join(__dirname, "view.html"));
+    // res.sendFile(path.join(__dirname, "tables.html"));
     res.send(tables);
   });
+
+app.get("/tables", function(req, res) {
+    res.sendFile(path.join(__dirname, "tables.html"));
+    // res.send(tables);
+  });
+
+app.get("/reserve", function(req, res) {
+    res.sendFile(path.join(__dirname, "reserve.html"));
+ }); 
 
   // POST ================================================
 app.post("/reservation", function(req, res) {

@@ -73,12 +73,25 @@
     <script>
 
         $.get("/api/tables", function (data) {
-            for (var i = 0; i < data.length; i++) {
-                var displayTable = $("<tr>");
-                $("#resbody").append(`<th> Name: ${data.name} </th>`);
-                $("#resbody").append(`<th> Phone Number: ${data.phone} </th>`);
-                $("#resbody").append(`<th> Time of Reservation: ${data.time} </th>`);
+            
+            if (data.reservation[0] !== undefined) {
+
+                for (var i = 0; i < data.reservation.length; i++) {
+                    var displayTable = $("<tr>");
+                    $("#resbody").append(`<th>${data.reservation[i].name} </th>`);
+                    $("#resbody").append(`<th>${data.reservation[i].phone}</th>`);
+                    $("#resbody").append(`<th>${data.reservation[i].time} </th></tr>`);
+                }
             }
+            if (data.waitList[0] !== undefined) {
+                for (var i = 0; i < data.waitList.length; i++) {
+                    var displayTable = $("<tr>");
+                    $("#waitbody").append(`<th>${data.waitList.name}  </th>`);
+                    $("#waitbody").append(`<th>${data.waitList.phone}</th>`);
+                    $("#waitbody").append(`<th>${data.waitList.time} </th></tr>`);
+                }
+            }
+
         })
 
     </script>

@@ -40,43 +40,48 @@
         </div>
 
         <table class="table table-striped">
-                <thead>
-                    <h2>Current Reservations</h2>
-                    <tr>
-                        <th>Name</th>
-                        <th>Phone #</th>
-                        <th>Time</th>
-                    </tr>
-                </thead>
-                <tbody id="resbody">
+            <thead>
+                <h2>Current Reservations</h2>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone #</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody id="resbody">
 
-                    
-                </tbody>
-            </table>
+            </tbody>
+        </table>
 
 
-            <table class="table table-striped">
-                    <thead>
-                        <h2>Waiting List</h2>
-                        <tr>
-                            <th>Name</th>
-                            <th>Phone #</th>
-                            <th>Time</th>
-                        </tr>
-                    </thead>
-                    <tbody id="waitbody">
-    
-                        
-                    </tbody>
-                </table>
-    
+        <table class="table table-striped">
+            <thead>
+                <h2>Waiting List</h2>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone #</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody id="waitbody">
 
+            </tbody>
+        </table>
 
     </div>
 
- <script>
-     
-</script>   
+    <script>
+
+        $.get("/api/tables", function (data) {
+            for (var i = 0; i < data.length; i++) {
+                var displayTable = $("<tr>");
+                $("#resbody").append(`<th> Name: ${data.name} </th>`);
+                $("#resbody").append(`<th> Phone Number: ${data.phone} </th>`);
+                $("#resbody").append(`<th> Time of Reservation: ${data.time} </th>`);
+            }
+        })
+
+    </script>
 </body>
 
 </html>

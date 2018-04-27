@@ -81,7 +81,7 @@
 
             var currentPage = window.location.origin;
 
-            $.post(currentPage + "/api/tables", newReservation, function (data) {
+            $.post(currentPage + "/reservation", newReservation, function (data) {
                 if (data === true) {
                     alert("Great success, stay hungry!")
                 }

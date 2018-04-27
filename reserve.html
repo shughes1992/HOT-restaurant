@@ -71,12 +71,34 @@
         $('.submit').click(function () {
             // Gather form inputs
             var newReservation = {
-                reservationName: $('name').val().trim(),
-                reservationPhone: $('phoneNumber').val().trim(),
-                reservationEmail: $('email').val().trim(),
-                reservationUid: $('uniqueId').val().trim()
+                reservationName: $('#name').val().trim(),
+                reservationPhone: $('#phoneNumber').val().trim(),
+                reservationEmail: $('#email').val().trim(),
+                reservationUid: $('#uniqueId').val().trim()
             };
-            
+
+            console.log(newReservation);
+
+            var currentPage = window.location.origin;
+
+            $.post(currentPage + "/api/tables", newReservation, function (data) {
+                if (data === true) {
+                    alert("Great success, stay hungry!")
+                }
+
+                if (data === false) {
+                    alert("You waited too long, be better...")
+                }
+
+                $('#name').val("");
+                $('#phoneNumber').val("");
+                $('#email').val("");
+                $('#uniqueId').val("");
+
+            })
+
+            return false;
+
         });
     </script>
 </body>

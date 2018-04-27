@@ -41,12 +41,12 @@
                         <input type="name" class="form-control" id="name" placeholder="Jaqueese Doe">
                     </div>
                     <div class="form-group">
-                        <label for="email">Password</label>
-                        <input type="email" class="form-control" id="email" placeholder="jdoe@hotnspicy.com">
-                    </div>
-                    <div class="form-group">
                         <label for="phoneNumber">Phone Number</label>
                         <input type="phoneNumber" class="form-control" id="phoneNumber" placeholder="123-456-7890">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="jdoe@hotnspicy.com">
                     </div>
                     <div class="form-group">
                         <label for="uniqueId">Unique ID</label>
@@ -60,14 +60,25 @@
             <div class="container">
                 <p>
                     <a href="api/tables">API Table Link</a>
-                     | 
+                    |
                     <a href="api/waitlist">API Wait List</a>
                 </p>
             </div>
         </footer>
     </div>
 
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+        $('.submit').click(function () {
+            // Gather form inputs
+            var newReservation = {
+                reservationName: $('name').val().trim(),
+                reservationPhone: $('phoneNumber').val().trim(),
+                reservationEmail: $('email').val().trim(),
+                reservationUid: $('uniqueId').val().trim()
+            };
+            
+        });
+    </script>
 </body>
 
 </html>
